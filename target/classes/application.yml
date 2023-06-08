@@ -1,0 +1,21 @@
+server:
+  port: 9090
+
+#debug: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3309/ecommerce?serverTimezone=GMT%2b8
+    username: root
+    password: root
+
+  thymeleaf:
+#    prefix: classpath:/templates/
+    cache: false
+#    suffix: .html
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

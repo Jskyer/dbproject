@@ -1,0 +1,453 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>User</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- google fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300' rel='stylesheet'
+          type='text/css'>
+    <!-- all css here -->
+    <!-- bootstrap v3.3.6 css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/bootstrap-select.min.css" rel="stylesheet">
+    <!-- animate css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- jquery-ui.min css -->
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <!-- RS slider css -->
+    <link rel="stylesheet" type="text/css" href="lib/rs-plugin/css/settings.css" media="screen" />
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <!-- font-awesome css -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- modernizr css -->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Add your site or application content here -->
+<!-- HOME SLIDER -->
+
+<!-- single-product-area start -->
+<!-- user-profile-area start -->
+<header>
+    <!-- header-bottom-area start -->
+    <div class="header-bottom-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a href="index.html"><img src="img/logo/logo.png" alt="" /></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 float-right account-wrap">
+                    <div class="my-account-holder float-right">
+                        <div class="my-account-title">
+                            <div class="user-icon float-left" onclick="redirectToUserPage()">
+                                <span th:text="${session.loginUser.username}"></span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <!--					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 float-right account-wrap">-->
+                    <!--						<div class="my-account-holder float-right">-->
+                    <!--							<div class="my-account-title">-->
+                    <!--								<a href="user.html" th:text="${session.loginUser.username}">-->
+                    <!--									<div class="user-icon float-left">-->
+                    <!--										<span th:text="${session.loginUser.username}"></span>-->
+                    <!--									</div>-->
+                    <!--								</a>-->
+                    <!--								<div class="clearfix"></div>-->
+                    <!--							</div>-->
+                    <!--						</div>-->
+
+
+                    <!-- Header shopping cart -->
+                    <!-- Header shopping cart -->
+
+                    <!--						 <div class="my-account-holder float-right">                -->
+                    <!--							<div class="my-account-title">-->
+                    <!--								<div class="user-icon float-left">-->
+                    <!--									<i class="fa fa-exchange" aria-hidden="true"></i>-->
+                    <!--								</div>                                   -->
+                    <!--								<div class="clearfix"></div>                     -->
+                    <!--							</div>-->
+                    <!--						</div>-->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header-bottom-area end -->
+    <!-- main-menu-area start -->
+    <!--		<div class="main-menu-area hidden-xs">-->
+    <!--			<div class="container">-->
+    <!--				<div class="row">-->
+    <!--					<div class="col-lg-12 col-md-12 col-sm-12">-->
+    <!--						<div class="main-menu">-->
+    <!--							<nav>-->
+    <!--								<ul>-->
+    <!--									<li><a href="index.html">Home</a></li>-->
+    <!--									<li><a href="about.html">About</a></li>-->
+    <!--									<li><a href="shop-list.html">Shop List</a></li>-->
+    <!--									<li><a href="single-product.html">Single Product</a></li>-->
+    <!--									<li><a href="contact.html">Contact</a></li>-->
+    <!--								</ul>-->
+    <!--							</nav>-->
+    <!--						</div>-->
+    <!--					</div>-->
+    <!--				</div>-->
+    <!--			</div>-->
+    <!--		</div>            -->
+    <!-- main-menu-area end -->
+
+    <!-- mobile-menu-area start -->
+    <!--		<div class="mobile-menu-area visible-xs">-->
+    <!--			<div class="container">-->
+    <!--				<div class="row">-->
+    <!--					<div class="col-md-12">-->
+    <!--						<div class="mobile-menu">-->
+    <!--							<nav id="dropdown">-->
+    <!--								<ul>-->
+    <!--									<li><a href="index.html">Home</a></li>-->
+    <!--									<li><a href="about.html">About</a></li>-->
+    <!--									<li><a href="shop-list.html">Shop List</a></li>-->
+    <!--									<li><a href="single-product.html">Single Product</a></li>-->
+    <!--									<li><a href="contact.html">Contact</a></li>-->
+    <!--								</ul>-->
+    <!--							</nav>-->
+    <!--						</div>					-->
+    <!--					</div>-->
+    <!--				</div>-->
+    <!--			</div>-->
+    <!--		</div>-->
+    <!-- mobile-menu-area end -->
+
+</header>
+<div class="user-profile-area">
+    <div class="container">
+        <div class="row justify-content-center" style="display:flex;justify-content: center; align-items:center;">
+
+<!--                    <div class="col-md-6 col-sm-6 col-xs-12">-->
+<!--                        <div class="single-pro-tab-content">-->
+<!--                            &lt;!&ndash; 用户头像 &ndash;&gt;-->
+<!--                            <div class="user-avatar">-->
+<!--                                <img id="avatar" src="" alt="" />-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-md-6 col-sm-6 col-xs-12 profile-info">-->
+                        <div class="card mb-4 shadow-sm" style="width: 250px;height: 250px; text-align: center">
+                            <!-- 用户名字 -->
+                            <h3 id="username" class="card-header">
+                                <span th:text="${session.loginUser.username}"></span>
+                            </h3>
+
+                            <!-- 用户余额 -->
+                            <div class="card-body">
+                                <div class="user-balance">
+                                    <span >余额:</span>
+                                    <span id="balance"></span>
+                                    <!--                                <span th:text="${session.loginUser.username}"></span>-->
+                                </div>
+
+                                <!-- 充值表单 -->
+                                <form id="recharge-form" action="#">
+                                    <label for="amount">充值金额:</label>
+                                    <input type="hidden" id="amount" name="amount" />
+                                    <button type="button" class="btn btn-lg btn-block btn-primary" data-amount="50">充值50</button>
+                                    <button type="button" class="btn btn-lg btn-block btn-primary" data-amount="100">充值100</button>
+                                </form>
+                            </div>
+
+                            <hr class="page-divider small">
+
+                            <!-- 用户地址 -->
+                            <div id="address" class="user-address"></div>
+
+                            <hr class="page-divider">
+
+                            <!-- 用户联系方式 -->
+                            <div class="user-contact">
+                            </div>
+
+                            <hr class="page-divider small">
+
+                        </div>
+<!--                    </div>-->
+
+        </div>
+    </div>
+</div>
+<!--<div class="my-account-holder float-right">-->
+<!--    <div class="total-cart my-account-title" data-toggle="my-cart">-->
+<!--        <div class="user-icon float-left">-->
+<!--            <i class="fa fa-shopping-cart" aria-hidden="true"></i>-->
+<!--        </div>-->
+<!--        <div id="Cart-list" class="clearfix"></div>-->
+
+<!--        <ul>-->
+<!--            <li class="cart-item">-->
+<!--                <div class="cart-img">-->
+<!--                    < img src="1.png" alt="">-->
+<!--                </div>-->
+<!--                <div class="cart-info">-->
+<!--                    <div class="cart-details">-->
+<!--                        <h4>966665599999t</h4>-->
+<!--                        <span>£165.00 <span>x 1</span></span>-->
+<!--                    </div>-->
+<!--                    <div class="del-icon">-->
+<!--                        <i class="fa fa-times-circle"></i>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="cart-item">-->
+<!--                <div class="cart-img">-->
+<!--                    < img src="1.png" alt="">-->
+<!--                </div>-->
+<!--                <div class="cart-info">-->
+<!--                    <div class="cart-details">-->
+<!--                        <h4>Vestibulum suscipit</h4>-->
+<!--                        <span>£165.00 <span>x 1</span></span>-->
+<!--                    </div>-->
+<!--                    <div class="del-icon">-->
+<!--                        <i class="fa fa-times-circle"></i>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <div class="subtotal-text">Subtotal:</div>-->
+<!--                <div class="subtotal-price">£300.00</div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                < a href=" " class="button float-right">Checkout</ a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</div>-->
+<!-- user-profile-area end -->
+
+<!-- single-product-area end -->
+
+<!-- footer start -->
+<footer>
+    <!-- footer-top-area start -->
+    <div class="footer-top-area">
+        <div class="container">
+            <div class="row">
+                <!-- footer-widget start -->
+                <div class="col-lg-3 col-md-3 col-sm-4">
+                    <div class="footer-widget">
+                        <img src="img/logo/logo-2.png" alt="" />
+                    </div>
+                </div>
+                <!-- footer-widget end -->
+
+                <!-- footer-widget start -->
+                <div class="col-lg-3 col-md-3 col-sm-4">
+                    <div class="footer-widget">
+                        <h3>CONTACT US</h3>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="fa fa-map-marker"> </i>
+                                Addresss: 460 Zaoyang Road, ECNU
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"> </i>
+                                Email: admin@ecnu.edu.cn
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"> </i>
+                                Phone: +8801912 199981
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- footer-widget end -->
+            </div>
+        </div>
+    </div>
+    <!-- footer-top-area end -->
+    <!-- footer-bottom-area start -->
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="copyright">
+                        <p>Copyright &copy; Ecommerce All rights reserved.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="payment-img">
+                        <img src="img/payment.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-bottom-area end -->
+</footer>
+<!-- footer end -->
+<!-- all js here -->
+<!-- jquery latest version -->
+<script src="js/vendor/jquery-1.12.0.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- owl.carousel js -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- jquery-ui js -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- RS-Plugin JS -->
+<script type="text/javascript" src="lib/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="lib/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="lib/rs-plugin/rs.home.js"></script>
+<!-- meanmenu js -->
+<script src="js/jquery.meanmenu.js"></script>
+<!-- wow js -->
+<script src="js/wow.min.js"></script>
+<!-- plugins js -->
+<script src="js/plugins.js"></script>
+<!-- main js -->
+<script src="js/main.js"></script>
+
+<!--<script>-->
+<!--    let Account=0;-->
+<!--    $(document).ready(function () {-->
+<!--        showAccount();-->
+<!--        loadInformation();-->
+<!--    })-->
+<!--    function showAccount(){-->
+<!--        $.ajax({-->
+<!--            url:"/user/getAccount",-->
+<!--            type:"GET",-->
+<!--            data:{-->
+<!--                "id":JSON.parse(localStorage.getItem("customer_session")).session.id-->
+<!--            },-->
+<!--            dataType: "Json",-->
+<!--            success:function(res){-->
+<!--                Account=res.list.account;-->
+<!--                console.log(Account);-->
+<!--            },-->
+<!--            error: function (xhr) {-->
+<!--                alert("加载出现未知异常，" + xhr.status);-->
+<!--            }-->
+<!--        })-->
+<!--    }-->
+<!--    function loadInformation(){-->
+<!--            var rechargeButtons = document.getElementsByClassName("recharge-btn");-->
+<!--            var balanceElement = $("#balance");-->
+<!--            var balance = Account;-->
+<!--            function updateBalance() {-->
+<!--                balanceElement.text("$" + balance);-->
+<!--            }-->
+<!--            for (var i = 0; i < rechargeButtons.length; i++) {-->
+<!--                rechargeButtons[i].addEventListener("click", function() {-->
+<!--                    var amount = parseInt($(this).attr("data-amount"));-->
+<!--                    balance += amount;-->
+<!--                    updateBalance();-->
+<!--                });-->
+<!--            }-->
+<!--            updateBalance();-->
+<!--        });-->
+<!--    }-->
+<!--    // $(document).ready(function() {-->
+<!--    //     var rechargeButtons = document.getElementsByClassName("recharge-btn");-->
+<!--    //     var balanceElement = $("#balance");-->
+<!--    //     var balance = Account;-->
+<!--    //-->
+<!--    //     function updateBalance() {-->
+<!--    //         balanceElement.text("$" + balance);-->
+<!--    //     }-->
+<!--    //-->
+<!--    //     for (var i = 0; i < rechargeButtons.length; i++) {-->
+<!--    //         rechargeButtons[i].addEventListener("click", function() {-->
+<!--    //             var amount = parseInt($(this).attr("data-amount"));-->
+<!--    //             balance += amount;-->
+<!--    //             updateBalance();-->
+<!--    //         });-->
+<!--    //     }-->
+<!--    //-->
+<!--    //     updateBalance();-->
+<!--    // });-->
+
+
+
+<!--</script>-->
+<script>
+    let Account = 0;
+    let balance = 0; // 声明全局变量 balance
+
+    $(document).ready(function () {
+        showAccount();
+    });
+
+    function showAccount(){
+        $.ajax({
+            url:"/user/getAccount",
+            type:"GET",
+            data:{
+                "id":JSON.parse(localStorage.getItem("customer_session")).session.id
+            },
+            dataType: "Json",
+            success:function(res){
+                Account=res.list.account;
+                balance = Account; // 更新全局的 balance 变量
+                console.log(Account);
+                loadInformation(balance); // 在更新 Account 后调用 loadInformation()
+            },
+            error: function (xhr) {
+                alert("加载出现未知异常，" + xhr.status);
+            }
+        });
+    }
+
+    function loadInformation(balance){
+        var rechargeButtons = document.getElementsByClassName("recharge-btn");
+        var balanceElement = $("#balance");
+
+        function updateBalance() {
+            balanceElement.text("$" + balance);
+        }
+
+        for (var i = 0; i < rechargeButtons.length; i++) {
+            rechargeButtons[i].addEventListener("click", function() {
+                var amount = parseInt($(this).attr("data-amount"));
+                balance += amount;
+                $.ajax({
+                    url:"/user/updateAcc",
+                    type:"POST",
+                    data:{
+                        "id":JSON.parse(localStorage.getItem("customer_session")).session.id,
+                        "delt":amount
+                    },
+                    dataType: "Json",
+                    success:function(res){
+                        alert("充值成功");
+                    },
+                    error: function (xhr) {
+                        alert("充值出现异常" + xhr.status);
+                    }
+                });
+                updateBalance();
+            });
+        }
+        updateBalance();
+    }
+</script>
+
+</body>
+</html>

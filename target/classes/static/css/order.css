@@ -1,0 +1,30 @@
+.order-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.order {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.order-image {
+    margin-right: 10px;
+}
+
+.order-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.order-details {
+    flex-grow: 1;
+}
+
+.order-details h2,
+.order-details p {
+    margin: 0;
+}

@@ -1,0 +1,681 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+        }
+
+        .order-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .order-box {
+            width: 100%;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .order-box h3 {
+            margin-top: 0;
+        }
+
+        .order {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .order-image {
+            flex: 0 0 auto;
+            margin-right: 20px;
+        }
+
+        .order-image img {
+            max-width: 50%;
+            height: auto;
+        }
+
+        .order-details {
+            flex: 1 1 auto;
+        }
+
+        .order-details h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .order-details p {
+            margin: 0;
+        }
+
+        nav#nav_navigation {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+    </style>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Order</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+  <!-- google fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300' rel='stylesheet'
+        type='text/css'>
+  <!-- all css here -->
+  <!-- bootstrap v3.3.6 css -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="css/bootstrap-select.min.css" rel="stylesheet">
+  <!-- animate css -->
+  <link rel="stylesheet" href="css/animate.css">
+  <!-- jquery-ui.min css -->
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
+  <!-- meanmenu css -->
+  <link rel="stylesheet" href="css/meanmenu.min.css">
+  <!-- RS slider css -->
+  <link rel="stylesheet" type="text/css" href="lib/rs-plugin/css/settings.css" media="screen" />
+  <!-- owl.carousel css -->
+  <link rel="stylesheet" href="css/owl.carousel.css">
+  <!-- font-awesome css -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <!-- style css -->
+  <link rel="stylesheet" href="css/style.css">
+<!--  <link rel="stylesheet" href="css/order.css">-->
+  <!-- responsive css -->
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- modernizr css -->
+  <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Add your site or application content here -->
+<!-- HOME SLIDER -->
+
+<!-- single-product-area start -->
+<!-- user-profile-area start -->
+<header>
+  <!-- header-bottom-area start -->
+  <div class="header-bottom-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+          <div class="logo">
+            <a href="index.html"><img src="img/logo/logo.png" alt="" /></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 float-right account-wrap">
+          <div class="my-account-holder float-right">
+            <div class="my-account-title">
+              <div class="user-icon float-left" onclick="redirectToUserPage()">
+                <span th:text="${session.loginUser.username}"></span>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <!--					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 float-right account-wrap">-->
+          <!--						<div class="my-account-holder float-right">-->
+          <!--							<div class="my-account-title">-->
+          <!--								<a href="user.html" th:text="${session.loginUser.username}">-->
+          <!--									<div class="user-icon float-left">-->
+          <!--										<span th:text="${session.loginUser.username}"></span>-->
+          <!--									</div>-->
+          <!--								</a>-->
+          <!--								<div class="clearfix"></div>-->
+          <!--							</div>-->
+          <!--						</div>-->
+
+
+          <!-- Header shopping cart -->
+          <!-- Header shopping cart -->
+
+          <!--						 <div class="my-account-holder float-right">                -->
+          <!--							<div class="my-account-title">-->
+          <!--								<div class="user-icon float-left">-->
+          <!--									<i class="fa fa-exchange" aria-hidden="true"></i>-->
+          <!--								</div>                                   -->
+          <!--								<div class="clearfix"></div>                     -->
+          <!--							</div>-->
+          <!--						</div>-->
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- header-bottom-area end -->
+  <!-- main-menu-area start -->
+  <!--		<div class="main-menu-area hidden-xs">-->
+  <!--			<div class="container">-->
+  <!--				<div class="row">-->
+  <!--					<div class="col-lg-12 col-md-12 col-sm-12">-->
+  <!--						<div class="main-menu">-->
+  <!--							<nav>-->
+  <!--								<ul>-->
+  <!--									<li><a href="index.html">Home</a></li>-->
+  <!--									<li><a href="about.html">About</a></li>-->
+  <!--									<li><a href="shop-list.html">Shop List</a></li>-->
+  <!--									<li><a href="single-product.html">Single Product</a></li>-->
+  <!--									<li><a href="contact.html">Contact</a></li>-->
+  <!--								</ul>-->
+  <!--							</nav>-->
+  <!--						</div>-->
+  <!--					</div>-->
+  <!--				</div>-->
+  <!--			</div>-->
+  <!--		</div>            -->
+  <!-- main-menu-area end -->
+
+  <!-- mobile-menu-area start -->
+  <!--		<div class="mobile-menu-area visible-xs">-->
+  <!--			<div class="container">-->
+  <!--				<div class="row">-->
+  <!--					<div class="col-md-12">-->
+  <!--						<div class="mobile-menu">-->
+  <!--							<nav id="dropdown">-->
+  <!--								<ul>-->
+  <!--									<li><a href="index.html">Home</a></li>-->
+  <!--									<li><a href="about.html">About</a></li>-->
+  <!--									<li><a href="shop-list.html">Shop List</a></li>-->
+  <!--									<li><a href="single-product.html">Single Product</a></li>-->
+  <!--									<li><a href="contact.html">Contact</a></li>-->
+  <!--								</ul>-->
+  <!--							</nav>-->
+  <!--						</div>					-->
+  <!--					</div>-->
+  <!--				</div>-->
+  <!--			</div>-->
+  <!--		</div>-->
+  <!-- mobile-menu-area end -->
+
+</header>
+
+<!--<div class="user-profile-area">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-lg-12 col-md-12">-->
+<!--        <div class="row">-->
+<!--          <div class="col-md-6 col-sm-6 col-xs-12">-->
+<!--            <div class="single-pro-tab-content">-->
+<!--              &lt;!&ndash; 用户头像 &ndash;&gt;-->
+<!--              <div class="user-avatar">-->
+<!--                <img id="avatar" src="" alt="" />-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-6 col-sm-6 col-xs-12 profile-info">-->
+<!--            <div class="user-info">-->
+<!--              &lt;!&ndash; 用户名字 &ndash;&gt;-->
+<!--              <h3 id="username">-->
+<!--                <span th:text="${session.loginUser.username}"></span>-->
+<!--              </h3>-->
+
+<!--              &lt;!&ndash; 用户余额 &ndash;&gt;-->
+<!--              <div class="user-balance">-->
+<!--                <span >余额:</span>-->
+<!--                <span id="balance"></span>-->
+<!--                &lt;!&ndash;                                <span th:text="${session.loginUser.username}"></span>&ndash;&gt;-->
+<!--              </div>-->
+
+<!--              &lt;!&ndash; 充值表单 &ndash;&gt;-->
+<!--              <form id="recharge-form" action="#">-->
+<!--                <label for="amount">充值金额:</label>-->
+<!--                <input type="hidden" id="amount" name="amount" />-->
+<!--                <button type="button" class="recharge-btn" data-amount="50">充值50</button>-->
+<!--                <button type="button" class="recharge-btn" data-amount="100">充值100</button>-->
+<!--              </form>-->
+
+<!--              <hr class="page-divider small">-->
+
+<!--              &lt;!&ndash; 用户地址 &ndash;&gt;-->
+<!--              <div id="address" class="user-address"></div>-->
+
+<!--              <hr class="page-divider">-->
+
+<!--              &lt;!&ndash; 用户联系方式 &ndash;&gt;-->
+<!--              <div class="user-contact">-->
+<!--              </div>-->
+
+<!--              <hr class="page-divider small">-->
+
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<body class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="section-title text-center">
+                <h2>我的订单</h2>
+            </div>
+        </div>
+    </div>
+    <div id="order-list" class="row">
+        <div class="order-container">
+            <div id="Orderlist" class="order-box"></div>
+<!--                <h3>订单一</h3>-->
+                <div id="Orderlist2" class="order">
+<!--                    <div class="order-image">-->
+<!--                        <img src="2.png" alt="Order Image">-->
+<!--                    </div>-->
+<!--                    <div class="order-details">-->
+<!--                        <h2>商品名: 商品A</h2>-->
+<!--                        <p>数量: 2</p>-->
+<!--                        <p>价格: $19.99</p>-->
+<!--                        <p>地址: 123 Main St</p>-->
+<!--                        <p>详细信息: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum volutpat arcu vitae dictum.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+                </div>
+
+
+    </div>
+    <nav aria-label="Page navigation" id="nav_navigation" style="text-align: center">
+        <!-- Pagination code goes here -->
+    </nav>
+</div>
+
+
+<div class="my-account-holder float-right">
+    <div class="total-cart my-account-title" data-toggle="my-cart">
+<!--        <div class="user-icon float-left">-->
+<!--            <i class="fa fa-shopping-cart" aria-hidden="true"></i>-->
+<!--        </div>-->
+        <div id="Cart-list" class="clearfix"></div>
+
+        <ul>
+            <li class="cart-item">
+                <div class="cart-img">
+                    < img src="1.png" alt="">
+                </div>
+                <div class="cart-info">
+                    <div class="cart-details">
+                        <h4>966665599999t</h4>
+                        <span>£165.00 <span>x 1</span></span>
+                    </div>
+                    <div class="del-icon">
+                        <i class="fa fa-times-circle"></i>
+                    </div>
+                </div>
+            </li>
+            <li class="cart-item">
+                <div class="cart-img">
+                    < img src="1.png" alt="">
+                </div>
+                <div class="cart-info">
+                    <div class="cart-details">
+                        <h4>Vestibulum suscipit</h4>
+                        <span>£165.00 <span>x 1</span></span>
+                    </div>
+                    <div class="del-icon">
+                        <i class="fa fa-times-circle"></i>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="subtotal-text">Subtotal:</div>
+                <div class="subtotal-price">£300.00</div>
+            </li>
+            <li>
+                < a href=" " class="button float-right">Checkout</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+<!-- user-profile-area end -->
+
+<!-- single-product-area end -->
+
+<!-- footer start -->
+<footer>
+  <!-- footer-top-area start -->
+  <div class="footer-top-area">
+    <div class="container">
+      <div class="row">
+        <!-- footer-widget start -->
+        <div class="col-lg-3 col-md-3 col-sm-4">
+          <div class="footer-widget">
+            <img src="img/logo/logo-2.png" alt="" />
+          </div>
+        </div>
+        <!-- footer-widget end -->
+
+        <!-- footer-widget start -->
+        <div class="col-lg-3 col-md-3 col-sm-4">
+          <div class="footer-widget">
+            <h3>CONTACT US</h3>
+            <ul class="footer-contact">
+              <li>
+                <i class="fa fa-map-marker"> </i>
+                Addresss: 460 Zaoyang Road, ECNU
+              </li>
+              <li>
+                <i class="fa fa-envelope"> </i>
+                Email: admin@ecnu.edu.cn
+              </li>
+              <li>
+                <i class="fa fa-phone"> </i>
+                Phone: +8801912 199981
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- footer-widget end -->
+      </div>
+    </div>
+  </div>
+  <!-- footer-top-area end -->
+  <!-- footer-bottom-area start -->
+  <div class="footer-bottom-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="copyright">
+            <p>Copyright &copy; Ecommerce All rights reserved.</p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="payment-img">
+            <img src="img/payment.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer-bottom-area end -->
+</footer>
+<!-- footer end -->
+<!-- all js here -->
+<!-- jquery latest version -->
+<script src="js/vendor/jquery-1.12.0.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- owl.carousel js -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- jquery-ui js -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- RS-Plugin JS -->
+<script type="text/javascript" src="lib/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="lib/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="lib/rs-plugin/rs.home.js"></script>
+<!-- meanmenu js -->
+<script src="js/jquery.meanmenu.js"></script>
+<!-- wow js -->
+<script src="js/wow.min.js"></script>
+<!-- plugins js -->
+<script src="js/plugins.js"></script>
+<!-- main js -->
+<script src="js/main.js"></script>
+
+<!--<script>-->
+<!--    let Account=0;-->
+<!--    $(document).ready(function () {-->
+<!--        showAccount();-->
+<!--        loadInformation();-->
+<!--    })-->
+<!--    function showAccount(){-->
+<!--        $.ajax({-->
+<!--            url:"/user/getAccount",-->
+<!--            type:"GET",-->
+<!--            data:{-->
+<!--                "id":JSON.parse(localStorage.getItem("customer_session")).session.id-->
+<!--            },-->
+<!--            dataType: "Json",-->
+<!--            success:function(res){-->
+<!--                Account=res.list.account;-->
+<!--                console.log(Account);-->
+<!--            },-->
+<!--            error: function (xhr) {-->
+<!--                alert("加载出现未知异常，" + xhr.status);-->
+<!--            }-->
+<!--        })-->
+<!--    }-->
+<!--    function loadInformation(){-->
+<!--            var rechargeButtons = document.getElementsByClassName("recharge-btn");-->
+<!--            var balanceElement = $("#balance");-->
+<!--            var balance = Account;-->
+<!--            function updateBalance() {-->
+<!--                balanceElement.text("$" + balance);-->
+<!--            }-->
+<!--            for (var i = 0; i < rechargeButtons.length; i++) {-->
+<!--                rechargeButtons[i].addEventListener("click", function() {-->
+<!--                    var amount = parseInt($(this).attr("data-amount"));-->
+<!--                    balance += amount;-->
+<!--                    updateBalance();-->
+<!--                });-->
+<!--            }-->
+<!--            updateBalance();-->
+<!--        });-->
+<!--    }-->
+<!--    // $(document).ready(function() {-->
+<!--    //     var rechargeButtons = document.getElementsByClassName("recharge-btn");-->
+<!--    //     var balanceElement = $("#balance");-->
+<!--    //     var balance = Account;-->
+<!--    //-->
+<!--    //     function updateBalance() {-->
+<!--    //         balanceElement.text("$" + balance);-->
+<!--    //     }-->
+<!--    //-->
+<!--    //     for (var i = 0; i < rechargeButtons.length; i++) {-->
+<!--    //         rechargeButtons[i].addEventListener("click", function() {-->
+<!--    //             var amount = parseInt($(this).attr("data-amount"));-->
+<!--    //             balance += amount;-->
+<!--    //             updateBalance();-->
+<!--    //         });-->
+<!--    //     }-->
+<!--    //-->
+<!--    //     updateBalance();-->
+<!--    // });-->
+
+
+
+<!--</script>-->
+<script>
+    let groupNum=0;
+    $(document).ready(function () {
+        showOrderList();
+    });
+    function showOrderList() {
+        $("#Orderlist").empty();
+        $.ajax({
+            url: "/showOrder",
+            type: "GET",
+            data: {
+                "id": JSON.parse(localStorage.getItem("customer_session")).session.id
+            },
+            dataType: "Json",
+            success: function (res) {
+                console.log(res);
+                let list0 = res.list;
+                let list1 = res.total;
+                let temp=0;
+                console.log(list0.length);
+                console.log(list1.length);
+                for (let i = 0; i < list1.length; i++) {
+                    //let num=list1[i].length;
+                    // let html1=
+                    //     '<div id="order-list" class="row">\n' +
+                    //     '<div class="order-container">\n' +
+                    //     '<div id="Orderlist" class="order-box">\n' +
+                    //     '<h3>订单<span>#{Ordernum}</span></h3>\n' +
+                    //     '</div>' ;
+                        // '</div>\n' +
+                        // '</div>\n' +
+                        // '</div>';
+                    // html1=html1.replace(/#{Ordernum}/g, i);
+                    // $("#Orderlist").append(html1);
+                    let sumPrice=0;
+                    groupNum=list1[i].group_num;
+                    let amount = parseInt(list1[i].count);//每个循环几次
+                    console.log("amounttttttttttttt:" +amount);
+                    let html3='<ul>' +
+                        '<div id="order-list" class="row">\n' +
+                        '<div class="order-container">\n' +
+                        '<div id="Orderlist" class="order-box">\n' +
+                        '<h3>订单<span>#{Ordernum}: </span><span>总价：$#{sumPrice}</span></h3>\n' +
+                        '<button onclick="signOrder()">签收</button>\n' +
+                        '</div>' ;
+                    for (let j = 0; j < amount; j++) {
+                        console.log("group_num:"+list1[i].group_num);
+                        console.log("list:"+list0[temp].dest);
+                       let html2=
+                            '<li>' +
+                            '<div id="Orderlist2" class="order">\n' +
+                            '<div class="order-image">\n' +
+                            '<img src="#{img}" alt="Order Image">\n' +
+                            '</div>\n' +
+                            '<div class="order-details">\n' +
+                            '<h2>商品名: <span>#{pname}</span></h2>\n' +
+                            '<p>数量: <span>#{amount}</span></p>\n' +
+                            '<p>价格: <span>#{price}</span></p>\n' +
+                            '<p>地址: <span>#{address}</span></p>\n' +
+                            '<p>详细信息: <span>#{details}</span></p>\n' +
+                            // '</div>\n' +
+                            // '</div>\n' +
+                            // '</div>\n' +
+                            '</div>\n' +
+                            '</div>\n' +
+                            '</li>';
+                        html2 = html2.replace(/#{img}/g, list0[temp].img);
+                        html2 = html2.replace(/#{address}/g, list0[temp].dest);
+                        html2 = html2.replace(/#{pname}/g, list0[temp].pname);
+                        html2 = html2.replace(/#{price}/g, list0[temp].price);
+                        html2 = html2.replace(/#{amount}/g, list0[temp].amount);
+                        html2 = html2.replace(/#{details}/g, list0[temp].detail);
+                        sumPrice += list0[temp].price;
+                        temp++;
+                        html3+=html2;
+                        // $("#Orderlist2").append(html2);
+                    }
+                    html3=html3.replace(/#{Ordernum}/g, i+1);
+                    html3=html3.replace(/#{sumPrice}/g, sumPrice);
+                    html3 += '</ul>';
+                    $("#Orderlist").append(html3);
+                     // $("#Orderlist2").append(html3);
+                    // console.log("num:"+amount);
+                    // console.log("num="+list1[i].count);
+                }
+
+                //     let orderHtml='<ul>';
+                //     for (let i = 0; i < list0.length; i++) {
+                //         let html =
+                //             '<div class="total-cart my-account-title" data-toggle="my-cart">' +
+                //             '<div class="clearfix"></div>' +
+                //             // '<ul>\n' +
+                //             '<li>\n' +
+                //             '<div class="cart-img">\n' +
+                //             '<a href="#"><img src="#{img}" alt="" /></a>    \n' +
+                //             '</div>\n' +
+                //             '<div class="cart-info">\n' +
+                //             // '<h4><a href="#">#{pname}</a></h4>\n' +
+                //             '<h4><a id="single-product-link" href="single-product.html?pid=#{pid}">#{pname}</a></h4>\n' +
+                //             '<span>£<span>#{price}<span>x<span>#{amount}</span></span></span></span>\n' +
+                //             '</div>\n' +
+                //             '<div class="del-icon">\n' +
+                //             // '<i class="fa fa-times-circle"></i>\n' +
+                //             '<i class="fa fa-times-circle" onclick="removeCartItem(' + list0[i].cid + ')"></i>\n' +
+                //             '</div>\n' +
+                //             '</li>\n';
+                //
+                //         let html =
+                //             '<div id="Orderlist" class="order-box">\n' +
+                //             '                <h3>订单<span>#{Ordernum}</span></h3>\n' +
+                //             '                <div class="order">\n' +
+                //             '                    <div class="order-image">\n' +
+                //             '                        <img src="2.png" alt="Order Image">\n' +
+                //             '                    </div>\n' +
+                //             '                    <div class="order-details">\n' +
+                //             '                        <h2>商品名: 商品A</h2>\n' +
+                //             '                        <p>数量: 2</p>\n' +
+                //             '                        <p>价格: $19.99</p>\n' +
+                //             '                        <p>地址: 123 Main St</p>\n' +
+                //             '                        <p>详细信息: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum volutpat arcu vitae dictum.</p>\n' +
+                //             '                    </div>\n' +
+                //             '                </div>\n' +
+                //             '            </div>'
+                //         // '</ul>';
+                //         //html中的信息格式 pname price img pid,? 总price
+                //         html = html.replace(/#{img}/g, list0[i].img);
+                //         html = html.replace(/#{pid}/g, list0[i].pid);
+                //         html = html.replace(/#{pname}/g, list0[i].pname);
+                //         html = html.replace(/#{price}/g, list0[i].price);
+                //         html = html.replace(/#{amount}/g, list0[i].amount);
+                //         sumPrice += list0[i].price * list0[i].amount;
+                //         cartHtml += html;
+                //         // $("#Cart-list").append(html);
+                //
+                //     }
+                //     // let html2 = '<li>\n' +
+                //     // 		'<div className="subtotal-text">Subtotal:</div>\n' +
+                //     // 		'<div className="subtotal-price">£#{sumPrice}</div>\n' +
+                //     // 		'</li>\n' +
+                //     // 		'<li>\n' +
+                //     // 		'<button onclick="checkout(#{sumPrice})" className="button float-right">Checkout</button>\n' +
+                //     // 		'</li>';
+                //     let html2 = '<li>\n' +
+                //         '<div class="subtotal-text">Subtotal:</div>\n' +
+                //         '<div class="subtotal-price">£#{sumPrice}</div>\n' +
+                //         '</li>\n' +
+                //         '<li>\n' +
+                //         '<button onclick="openAddressModal()" className="button float-right">Checkout</button>\n' +
+                //         '</li>';
+                //     html2=html2.replace(/#{sumPrice}/g,sumPrice);
+                //     // <li>
+                //     // 	<div className="subtotal-text">Subtotal:</div>
+                //     // 	<div className="subtotal-price">£300.00</div>
+                //     // </li>
+                //     // <li>
+                //     // 	<a href="#" className="button float-right">Checkout</a>
+                //     // </li>
+                //     //
+                //     cartHtml+=html2;
+                //     cartHtml += '</ul>';
+                //     $("#Cart-list").append(cartHtml);
+            },
+            error: function (xhr) {
+                alert("加载未知异常，" + xhr.status);
+            }
+        })
+    }
+    function signOrder(){
+        // console.log("我进来了哟");
+        $.ajax({
+            url: "/signOrder",
+            type: "POST",
+            data: {
+                "id":JSON.parse(localStorage.getItem("customer_session")).session.id,
+                "groupNum": groupNum
+            },
+            dataType: "json",
+            success: function (res) {
+                // 删除成功后更新购物车列表显示
+                alert("签收成功！");
+                showOrderList();
+            },
+            error: function (xhr) {
+                alert("签收出现未知异常：" + xhr.status);
+            }
+        });
+    }
+</script>
+</body>
+</html>
