@@ -97,11 +97,11 @@ public class CartController {
     public Map<String, Object> checkoutCart(@RequestParam("id") Integer id,@RequestParam("address") String address) {
         String msg = "success";
         try{
-            cartService.checkoutCart(id,address);
+            msg= cartService.checkoutCart(id,address);
         }catch(Exception e){
             msg = e.getMessage();
         }
-        System.out.println(msg);
+        System.out.println("controller"+msg);
 
         Map<String, Object> map = new HashMap<>();
         map.put("msg", msg);

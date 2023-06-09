@@ -74,15 +74,5 @@ public class ProductService {
         return cnt;
     }
 
-//    public List<Product> showSlide() throws Exception{
-//        List<Product> products = null;
-//        try{
-//            products = productMapper.selectSlideShow();
-//        }catch (Exception e){
-//            System.out.println(e.getMessage());
-//            throw new ProductException("showSlide failure");
-//        }
-//        return products;
-//    }
 
 }

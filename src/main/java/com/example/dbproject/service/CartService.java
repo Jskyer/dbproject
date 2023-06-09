@@ -2,25 +2,18 @@ package com.example.dbproject.service;
 
 import com.example.dbproject.VO.CartVO;
 import com.example.dbproject.entity.Cart;
-import com.example.dbproject.entity.Customer;
-import com.example.dbproject.entity.Product;
 import com.example.dbproject.mapper.CartMapper;
 import com.example.dbproject.mapper.CustomerMapper;
 import com.example.dbproject.mapper.OrderItemMapper;
-import com.example.dbproject.mapper.ProductMapper;
 import com.example.dbproject.service.ex.CartException;
 import com.example.dbproject.service.ex.CustomerException;
 import com.example.dbproject.service.ex.InsertException;
 import com.example.dbproject.service.ex.UpdateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
-import sun.net.idn.Punycode;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 @Service
 public class CartService {
     /** 购物车业务层依赖于持久层（购物车+商品）*/
@@ -30,6 +23,8 @@ public class CartService {
     private CustomerMapper customerMapper;
     @Autowired
     private OrderItemMapper orderItemMapper;
+    @Autowired
+    private CustomerService customerService;
     /**
     将商品添加到购物车
     id 用户id
@@ -40,19 +35,8 @@ public class CartService {
     public void addToCart(Integer id,Integer pid,Integer amount){
         Cart result=cartMapper.selectCartByIdAndPid(id,pid);
         if(result==null){//购物车中原来没有要添加到商品
-//            Cart cart=new Cart();
-//
-//            cart.setId(id);
-//            cart.setPid(pid);
-//            cart.setAmount(amount);
-            //价格
-//            Product product=productMapper.selectByPid(pid);
-            /** cart中没有price
-             * 等后面再改
-             * cart.setPrice(product.getPrice());
-             * */
-
-            Integer rows=cartMapper.insertCart(id, pid, amount);
+            Integer next=customerMapper.selectById(id).getNext_group_num();
+            Integer rows=cartMapper.insertCart(id, pid, amount,next);
             if(rows!=1){
                 throw new InsertException("插入失败，发生异常!");
             }
@@ -114,25 +98,49 @@ public class CartService {
         return cnt;
     }
 
-    public void checkoutCart(Integer id,String dest){
-        List<CartVO> result=cartMapper.selectCartVOById(id);
+    public String checkoutCart(Integer id,String dest){
         Integer data=customerMapper.selectById(id).getNext_group_num();
-        for (CartVO cartVO : result) {
-            Integer pid=cartVO.getPid();
-            Integer amount=cartVO.getAmount();
-            Integer row=orderItemMapper.insertOrder(id,pid,amount,dest,data);
-            if(row!=1){
-                throw new InsertException("加入失败，发生异常！");
+        Integer sum=null;
+
+        //System.out.println("sumjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj="+sum);
+
+        try{
+            sum=-cartMapper.getPrice(id,data);
+            System.out.println("sum="+sum);
+        }catch (Exception e){
+            System.out.println("sum:"+sum);
+            e.printStackTrace();
+        }
+
+        String msg = "success";
+        try{
+            customerService.updateAccount(id,sum);
+        }catch (Exception e){
+            msg = e.getMessage();
+            System.out.println("service:"+e.getMessage());
+        }
+
+        if(msg.equals("success")){
+            data++;
+            customerMapper.updateNext(id,data);
+
+            List<CartVO> result=cartMapper.selectCartVOById(id);
+            for (CartVO cartVO : result) {
+                Integer pid=cartVO.getPid();
+                Integer amount=cartVO.getAmount();
+                Integer row=orderItemMapper.insertOrder(id,pid,amount,dest,data);
+                if(row!=1){
+                    throw new InsertException("加入失败，发生异常！");
+                }
+            }
+
+            Integer rows=cartMapper.deleteAllCart(id);
+            if(rows==0){
+                throw new InsertException("删除失败，发生异常!");
             }
         }
-        Integer sum=cartMapper.getPrice(id,data);
-        data++;
-        customerMapper.updateNext(id,data);
-        customerMapper.deductAccount(id,sum);
-        Integer rows=cartMapper.deleteAllCart(id);
-        if(rows!=1){
-            throw new InsertException("删除失败，发生异常!");
-        }
+
+        return msg;
     }
 
 }

@@ -12,5 +12,5 @@ public class Customer {
     private Integer account;
     @JsonIgnore
     private String salt;
-    Integer next_group_num;
+    private Integer next_group_num;
 }

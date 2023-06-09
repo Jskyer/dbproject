@@ -509,22 +509,14 @@
                 let list1 = res.total;
                 let temp=0;
                 console.log(list0.length);
-                console.log(list1.length);
+                console.log("list1:"+list1.length);
                 for (let i = 0; i < list1.length; i++) {
-                    //let num=list1[i].length;
-                    // let html1=
-                    //     '<div id="order-list" class="row">\n' +
-                    //     '<div class="order-container">\n' +
-                    //     '<div id="Orderlist" class="order-box">\n' +
-                    //     '<h3>订单<span>#{Ordernum}</span></h3>\n' +
-                    //     '</div>' ;
-                        // '</div>\n' +
-                        // '</div>\n' +
-                        // '</div>';
-                    // html1=html1.replace(/#{Ordernum}/g, i);
-                    // $("#Orderlist").append(html1);
+
                     let sumPrice=0;
                     groupNum=list1[i].group_num;
+                    if(i==0){
+                        console.log("groupnum:"+groupNum);
+                    }
                     let amount = parseInt(list1[i].count);//每个循环几次
                     console.log("amounttttttttttttt:" +amount);
                     let html3='<ul>' +
@@ -532,7 +524,7 @@
                         '<div class="order-container">\n' +
                         '<div id="Orderlist" class="order-box">\n' +
                         '<h3>订单<span>#{Ordernum}: </span><span>总价：$#{sumPrice}</span></h3>\n' +
-                        '<button onclick="signOrder()">签收</button>\n' +
+                        '<button onclick="signOrder(' + groupNum + ')">签收</button>\n' +
                         '</div>' ;
                     for (let j = 0; j < amount; j++) {
                         console.log("group_num:"+list1[i].group_num);
@@ -561,7 +553,7 @@
                         html2 = html2.replace(/#{price}/g, list0[temp].price);
                         html2 = html2.replace(/#{amount}/g, list0[temp].amount);
                         html2 = html2.replace(/#{details}/g, list0[temp].detail);
-                        sumPrice += list0[temp].price;
+                        sumPrice += list0[temp].price * list0[temp].amount;
                         temp++;
                         html3+=html2;
                         // $("#Orderlist2").append(html2);
@@ -574,89 +566,13 @@
                     // console.log("num:"+amount);
                     // console.log("num="+list1[i].count);
                 }
-
-                //     let orderHtml='<ul>';
-                //     for (let i = 0; i < list0.length; i++) {
-                //         let html =
-                //             '<div class="total-cart my-account-title" data-toggle="my-cart">' +
-                //             '<div class="clearfix"></div>' +
-                //             // '<ul>\n' +
-                //             '<li>\n' +
-                //             '<div class="cart-img">\n' +
-                //             '<a href="#"><img src="#{img}" alt="" /></a>    \n' +
-                //             '</div>\n' +
-                //             '<div class="cart-info">\n' +
-                //             // '<h4><a href="#">#{pname}</a></h4>\n' +
-                //             '<h4><a id="single-product-link" href="single-product.html?pid=#{pid}">#{pname}</a></h4>\n' +
-                //             '<span>£<span>#{price}<span>x<span>#{amount}</span></span></span></span>\n' +
-                //             '</div>\n' +
-                //             '<div class="del-icon">\n' +
-                //             // '<i class="fa fa-times-circle"></i>\n' +
-                //             '<i class="fa fa-times-circle" onclick="removeCartItem(' + list0[i].cid + ')"></i>\n' +
-                //             '</div>\n' +
-                //             '</li>\n';
-                //
-                //         let html =
-                //             '<div id="Orderlist" class="order-box">\n' +
-                //             '                <h3>订单<span>#{Ordernum}</span></h3>\n' +
-                //             '                <div class="order">\n' +
-                //             '                    <div class="order-image">\n' +
-                //             '                        <img src="2.png" alt="Order Image">\n' +
-                //             '                    </div>\n' +
-                //             '                    <div class="order-details">\n' +
-                //             '                        <h2>商品名: 商品A</h2>\n' +
-                //             '                        <p>数量: 2</p>\n' +
-                //             '                        <p>价格: $19.99</p>\n' +
-                //             '                        <p>地址: 123 Main St</p>\n' +
-                //             '                        <p>详细信息: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum volutpat arcu vitae dictum.</p>\n' +
-                //             '                    </div>\n' +
-                //             '                </div>\n' +
-                //             '            </div>'
-                //         // '</ul>';
-                //         //html中的信息格式 pname price img pid,? 总price
-                //         html = html.replace(/#{img}/g, list0[i].img);
-                //         html = html.replace(/#{pid}/g, list0[i].pid);
-                //         html = html.replace(/#{pname}/g, list0[i].pname);
-                //         html = html.replace(/#{price}/g, list0[i].price);
-                //         html = html.replace(/#{amount}/g, list0[i].amount);
-                //         sumPrice += list0[i].price * list0[i].amount;
-                //         cartHtml += html;
-                //         // $("#Cart-list").append(html);
-                //
-                //     }
-                //     // let html2 = '<li>\n' +
-                //     // 		'<div className="subtotal-text">Subtotal:</div>\n' +
-                //     // 		'<div className="subtotal-price">£#{sumPrice}</div>\n' +
-                //     // 		'</li>\n' +
-                //     // 		'<li>\n' +
-                //     // 		'<button onclick="checkout(#{sumPrice})" className="button float-right">Checkout</button>\n' +
-                //     // 		'</li>';
-                //     let html2 = '<li>\n' +
-                //         '<div class="subtotal-text">Subtotal:</div>\n' +
-                //         '<div class="subtotal-price">£#{sumPrice}</div>\n' +
-                //         '</li>\n' +
-                //         '<li>\n' +
-                //         '<button onclick="openAddressModal()" className="button float-right">Checkout</button>\n' +
-                //         '</li>';
-                //     html2=html2.replace(/#{sumPrice}/g,sumPrice);
-                //     // <li>
-                //     // 	<div className="subtotal-text">Subtotal:</div>
-                //     // 	<div className="subtotal-price">£300.00</div>
-                //     // </li>
-                //     // <li>
-                //     // 	<a href="#" className="button float-right">Checkout</a>
-                //     // </li>
-                //     //
-                //     cartHtml+=html2;
-                //     cartHtml += '</ul>';
-                //     $("#Cart-list").append(cartHtml);
             },
             error: function (xhr) {
                 alert("加载未知异常，" + xhr.status);
             }
         })
     }
-    function signOrder(){
+    function signOrder(groupNum){
         // console.log("我进来了哟");
         $.ajax({
             url: "/signOrder",

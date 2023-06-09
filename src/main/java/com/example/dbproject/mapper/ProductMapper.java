@@ -20,9 +20,6 @@ public interface ProductMapper {
     @Select("select * from product where pid = #{pid}")
     public Product selectDetail(Integer pid);
 
-// @Select("select * from product order by launch_time desc limit 0,5")
-// public List<Product> selectSlideShow();
-
     @Select("select count(*) from product")
     public Integer countHeadPage();
 
@@ -31,6 +28,4 @@ public interface ProductMapper {
 
     @Select("select count(*) from product where pname like #{pname}")
     public Integer countLikeNameByPage(String pname);
-    @Select("select * from product where pid=#{pid}")
-    Product selectByPid(Integer pid);
 }

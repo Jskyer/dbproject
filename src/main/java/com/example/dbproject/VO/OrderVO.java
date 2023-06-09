@@ -2,11 +2,8 @@ package com.example.dbproject.VO;
 
 import lombok.Data;
 
-import java.io.Serializable;
-import java.util.Date;
-
 @Data
-public class orderVO {
+public class OrderVO {
     private Integer oid;
     private Integer id;
     private Integer pid;

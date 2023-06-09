@@ -1,8 +1,6 @@
 package com.example.dbproject.controller;
 
-import com.example.dbproject.VO.CartVO;
 import com.example.dbproject.entity.Customer;
-import com.example.dbproject.entity.Product;
 import com.example.dbproject.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller

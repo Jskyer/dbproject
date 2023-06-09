@@ -2,10 +2,6 @@ package com.example.dbproject.mapper;
 
 import com.example.dbproject.entity.Customer;
 import org.apache.ibatis.annotations.*;
-
-import java.util.List;
-
-
 @Mapper
 public interface CustomerMapper {
 
@@ -27,8 +23,8 @@ public interface CustomerMapper {
     @Update("update customer set account = account + #{delt} where id = #{id}")
     public void updateAccount(Integer id, Integer delt);
 
-    @Update("update customer set account = account - #{delt} where id = #{id}")
-    public void deductAccount(Integer id, Integer delt);
+//    @Update("update customer set account = account - #{delt} where id = #{id}")
+//    public void deductAccount(Integer id, Integer delt);
     @Update("update customer set next_group_num = #{next_group_num} where id = #{id} ")
     public void updateNext(Integer id,Integer next_group_num);
 

@@ -55,7 +55,7 @@
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 account-wrap" style="position: absolute; right: 0">
 						<div class="my-account-holder float-right">
 							<div class="my-account-title">
-								<div class="user-icon float-left">
+								<div class="user-icon float-left" onclick="redirectToUserPage()">
 									<span th:text="${session.loginUser.username}"></span>
 								</div>
 								<div class="clearfix"></div>
@@ -614,6 +614,15 @@
 		// 跳转到用户页面
 		console.log(orderPageURL);
 		window.location.href = orderPageURL;
+	}
+	function redirectToUserPage() {
+		// 获取当前登录用户的用户名
+		var username = JSON.parse(localStorage.getItem("customer_session")).session.username;
+		// 构建用户页面的 URL，假设使用用户名作为参数
+		var userPageURL = "/user/" + username;
+		// 跳转到用户页面
+		console.log(userPageURL);
+		window.location.href = userPageURL;
 	}
 </script>
 </body>

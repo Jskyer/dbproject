@@ -26,16 +26,6 @@ class CustomerTests {
             customerMapper.updatePassword(5, "1111");
             int money = customerMapper.selectAccount(5);
             System.out.println(money);
-//            customerMapper.updateAccount(5, -1000);
-
-//            customerService.register("apple", "1111", 1000);
-//            String str = customerService.login("apple", "123");
-//            System.out.println(str);
-
-//            customerService.updatePassword(7, "123");
-//            Integer acc = customerService.showAccount(5);
-//            System.out.println(acc);
-//            customerService.updateAccount(6, 1000);
             System.out.println("test success");
         }catch (Exception e){
             System.out.println(e.getMessage());

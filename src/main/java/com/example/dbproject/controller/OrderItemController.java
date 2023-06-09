@@ -1,16 +1,13 @@
 package com.example.dbproject.controller;
 
-import com.example.dbproject.VO.CartVO;
-import com.example.dbproject.VO.grp_num;
-import com.example.dbproject.VO.orderVO;
-import com.example.dbproject.entity.OrderItem;
+import com.example.dbproject.VO.GrpNum;
+import com.example.dbproject.VO.OrderVO;
 import com.example.dbproject.service.CartService;
 import com.example.dbproject.service.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,18 +18,18 @@ public class OrderItemController {
     private OrderItemService orderItemService;
     @Autowired
     private CartService cartService;
-    @RequestMapping("selectOrder")
-    public List<OrderItem> selectOrder(Integer id, Integer[] cid, String dest, Integer group_num, Date orderdate){
-        OrderItem orderItem=new OrderItem();
-        List<OrderItem> data=orderItemService.selectOrder(id,cid,orderItem.getOid(),group_num, orderItemService.create(id,cid,dest,group_num,orderdate));
-        return data;
-    }
+//    @RequestMapping("selectOrder")
+//    public List<OrderItem> selectOrder(Integer id, Integer[] cid, String dest, Integer group_num, Date orderdate){
+//        OrderItem orderItem=new OrderItem();
+//        List<OrderItem> data=orderItemService.selectOrder(id,cid,orderItem.getOid(),group_num, orderItemService.create(id,cid,dest,group_num,orderdate));
+//        return data;
+//    }
 
-    @RequestMapping("create")
-    public Integer create(Integer id, Integer[] cid, String dest, Integer group_num, Date orderdate){
-        Integer data=orderItemService.create(id,cid,dest,group_num,orderdate);
-        return data;
-    }
+//    @RequestMapping("create")
+//    public Integer create(Integer id, Integer[] cid, String dest, Integer group_num, Date orderdate){
+//        Integer data=orderItemService.create(id,cid,dest,group_num,orderdate);
+//        return data;
+//    }
     @RequestMapping("findPrice")
     public Integer findPrice(Integer id, Integer group_num){
         Integer data=orderItemService.findPrice(id,group_num);
@@ -42,8 +39,8 @@ public class OrderItemController {
     @GetMapping("/showOrder")
     @ResponseBody
     public Map<String, Object> showOrder(@RequestParam("id") Integer id){
-        List<orderVO> data=null;
-        List<grp_num> total=null;
+        List<OrderVO> data=null;
+        List<GrpNum> total=null;
         try{
             data = orderItemService.showOrder(id);
             total = orderItemService.findgrp(id);
@@ -61,6 +58,7 @@ public class OrderItemController {
     @ResponseBody
     public Map<String, Object> signOrder(@RequestParam("id") Integer id,@RequestParam("groupNum") Integer group_num) {
         String msg = "success";
+        System.out.println("group_NUM="+group_num);
         try{
             orderItemService.signOrder(id,group_num);
         }catch(Exception e){
